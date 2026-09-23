@@ -88,6 +88,7 @@ if __name__ == "__main__":
     temp_dir = Path(__file__).parent / "temp"
     temp_dir.mkdir(exist_ok=True)
     print("Starting backend...")
-    print("API Docs: http://localhost:8000/docs")
+    print("API Docs: http://local\host:8000/docs")
     print("Health Check: http://localhost:8000/health")
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # This API has no websocket routes, so disable websocket protocol loading.
+    uvicorn.run(app, host="0.0.0.0", port=8000, ws="none")
